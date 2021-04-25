@@ -17,43 +17,40 @@ def buildTrie(words):
 
     return root
 
-def get_nbrs(i, j, board):
-    if i > 0:
-        yield (i - 1, j)
-    if i < len(board) - 1:
-        yield (i + 1, j)
-    if j > 0:
-        yield (i, j - 1)
-    if j < len(board[0]) - 1:
-        yield (i, j + 1)
-
-
-def search(i, j, board, trie_node, path, words_found, visited):
-
-    if trie_node is None:
-        return
+def search(i, j, board, trie_node, path, words_found):
 
     if trie_node.is_word:
-        words_found.add(''.join(path))
+        words_found.append(''.join(path))
+        trie_node.is_word = False
 
-    for ii, jj in get_nbrs(i, j, board):
-        if (ii, jj) not in visited:
-            cc = board[ii][jj]
-            search(ii, jj, board, trie_node.children.get(cc), path + [cc], words_found, visited | {(ii, jj)})
+    if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
+        return 
+
+    c = board[i][j]
+    trie_node = trie_node.children.get(c)
+    if not trie_node:
+        return
+    path = path + [c]
+
+    board[i][j] = ''
+    search(i + 1, j, board, trie_node, path, words_found)
+    search(i - 1, j, board, trie_node, path, words_found)
+    search(i, j + 1, board, trie_node, path, words_found)
+    search(i, j - 1, board, trie_node, path, words_found)
+    board[i][j] = c
 
 
 def solve(board, words):
         trie_root = buildTrie(words)
 
-        words_found = set()
+        words_found = []
         for i in range(len(board)):
             for j in range(len(board[0])):
-                c = board[i][j]
-                search(i, j, board, trie_root.children.get(c), [c], words_found, {(i, j)})
+                search(i, j, board, trie_root, [], words_found)
 
         return words_found
 
-# print(solve([["a"]], ["a"]))
+print(solve([["a"]], ["a"]))
 
 # print(solve([["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], ["oath","pea","eat","rain"]))
 
