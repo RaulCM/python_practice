@@ -129,6 +129,13 @@ def insert_complete_tree(root, val):
     return root
 
 
+def inorder_gen(root):
+    if root:
+        yield from inorder_gen(root.left)
+        yield root.val
+        yield from inorder_gen(root.right)
+
+
 items = [1, [2, [4, None, None], [5, None, None]], [3, [6, None, None], None]]
 # items = [1,  [2,None, None], None]
 
@@ -148,5 +155,5 @@ insert_complete_tree(root, 7)
 print("levels", levels(root))
 
 
-
-
+for it in inorder_gen(root):
+    print(it)
