@@ -9,7 +9,7 @@ def groupby(iterable, key=lambda x: x):
 
 
 def sortedstr(word):
-    return ''.join(sorted(word))
+    return ''.join(sorted(word.lower()))
 
 
 def anagram_table(words):
