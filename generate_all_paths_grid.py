@@ -4,7 +4,6 @@
 def gen_paths(r, c, dest_r, dest_c, path_so_far, all_paths):
     if (r, c) == (dest_r, dest_c):
         all_paths.append(path_so_far)
-        return
 
     if r < dest_r:
         gen_paths(r + 1, c, dest_r, dest_c, path_so_far + ["D"], all_paths)
@@ -14,5 +13,5 @@ def gen_paths(r, c, dest_r, dest_c, path_so_far, all_paths):
 
 
 acc = []
-gen_paths(0, 0, 2, 3, [], acc)
+gen_paths(0, 0, 1, 1, [], acc)
 print(acc)
