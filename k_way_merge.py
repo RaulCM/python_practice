@@ -1,11 +1,9 @@
-
 from queue import PriorityQueue
 
 
 def put(min_heap, arrays, r, i):
     if len(arrays[r]) > i:
         min_heap.put_nowait((arrays[r][i], r, i))
-
 
 
 def merge(arrays):
@@ -23,6 +21,7 @@ def merge(arrays):
         put(min_heap, arrays, r, i + 1)
 
     return acc
+
 
 def merge2(a1, a2):
 
@@ -60,18 +59,10 @@ def merge_recur(arrays):
         return arrays[0]
 
     acc = merge2(arrays[0], arrays[1])
-    return merge_recur(arrays[2:] + [acc]) # O(k) copy :(
+    return merge_recur(arrays[2:] + [acc])  # O(k) copy :(
 
 
-
-arrays = [
-    [5,7,10],
-    [3,6,8,9],
-    [0, 0, 1],
-    [],
-    [4,7,13],
-    [2,4,6,8,10]
-]
+arrays = [[5, 7, 10], [3, 6, 8, 9], [0, 0, 1], [], [21], [4, 7, 13], [2, 4, 6, 8, 10]]
 
 print(merge(arrays))
 print(merge_recur(arrays))
