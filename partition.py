@@ -5,8 +5,7 @@ def partition(nums, start, end, predicate):
     hi = end
 
     while lo <= hi:
-        value = predicate(nums[lo])
-        if value == 0:
+        if predicate(nums[lo]):
             lo += 1
         else:
             nums[lo], nums[hi] = nums[hi], nums[lo]
@@ -17,8 +16,16 @@ def partition(nums, start, end, predicate):
 
 nums = [0, 1, 2, 0, 1, 2]
 
-pivot = partition(nums, 0, len(nums) - 1, lambda x: 0 if x == 0 else x)
+pivot = partition(nums, 0, len(nums) - 1, lambda x: x == 0)
 print(nums, pivot)
 
-pivot = partition(nums, 2, len(nums) - 1, lambda x: 0 if x == 1 else x)
+pivot = partition(nums, 2, len(nums) - 1, lambda x: x == 1)
+print(nums, pivot)
+
+nums = [2, 1, 0, 2, 1, 0]
+
+pivot = partition(nums, 0, len(nums) - 1, lambda x: x == 0)
+print(nums, pivot)
+
+pivot = partition(nums, 2, len(nums) - 1, lambda x: x == 1)
 print(nums, pivot)
