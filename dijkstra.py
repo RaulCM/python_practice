@@ -1,31 +1,35 @@
 from queue import PriorityQueue
-from collections import defaultdict
-from pprint import pprint
 
 
 def make_undir_wt_graph(edges):
-    adj_list = defaultdict(list)
+    adj_list = dict()
     for u, v, w in edges:
-        adj_list[u].append((v, w))
-        adj_list[v].append((u, w))
+        adj_list.setdefault(u, []).append((v, w))
+        adj_list.setdefault(v, []).append((u, w))
 
-    return dict(adj_list)
+    return adj_list
 
 
 def dijkstra(adj_list, src):
-    distance = defaultdict(lambda: float("inf"))
+    distance = dict()
     predecessor = dict()
+    visited = set()
 
     pq = PriorityQueue()
     pq.put((0, src))
 
     while not pq.empty():
         d, u = pq.get()
-        if d <= distance[u]:
+        if u not in visited:
+            # since we dont have a decrease key op on Pq,
+            # keep track of expanded vertices explicitly and ignore duplicates in Q
             distance[u] = d
+            visited.add(u)
+
             for v, w in adj_list[u]:
                 d1 = d + w
-                if d1 < distance[v]:
+                if d1 < distance.get(v, float("inf")):
+                    assert v not in visited
                     pq.put((d1, v))
                     predecessor[v] = u
                     distance[v] = d1
@@ -56,8 +60,8 @@ edges = [
 ]
 
 adj_list = make_undir_wt_graph(edges)
-pprint(adj_list)
+print("adj list", adj_list)
 
 distance, predecessor = dijkstra(adj_list, 1)
-pprint(distance)
-pprint(get_path(1, 6, predecessor))
+print("distances from 1", distance)
+print("path 1 to 6", get_path(1, 6, predecessor))
