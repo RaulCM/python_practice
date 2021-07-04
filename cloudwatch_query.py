@@ -1,7 +1,7 @@
-import boto3
-import sys
-import time
 from datetime import datetime, timezone, timedelta
+import time
+import sys
+import boto3
 
 cloudwatch = boto3.client('logs')
 logGroupName = "Prod/application.json.log"

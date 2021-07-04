@@ -1,11 +1,11 @@
 def trapped_water_vol(heights):
-    """instead of calculating area by height*width, 
-    we can consider it in a cumulative way. 
+    """instead of calculating area by height*width,
+    we can consider it in a cumulative way.
     sum water amount of each bin( of width=1).
-    
+
     Search from left to right and maintain a max height of left and right separately,
      which is like a one-side wall of partial container.
-    
+
     Fix the higher one and flow water from the lower part.
 
     For example,
@@ -78,8 +78,8 @@ def trapped_water_vol_1(heights):
     return water
 
 
-print(trapped_water_vol([4,2,0,3,2,5]))
-print(trapped_water_vol_1([4,2,0,3,2,5]))
+print(trapped_water_vol([4, 2, 0, 3, 2, 5]))
+print(trapped_water_vol_1([4, 2, 0, 3, 2, 5]))
 
-print(trapped_water_vol([0,1,0,2,1,0,1,3,2,1,2,1]))
-print(trapped_water_vol_1([0,1,0,2,1,0,1,3,2,1,2,1]))
+print(trapped_water_vol([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+print(trapped_water_vol_1([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))

@@ -24,7 +24,7 @@ def minWindow(source, target):
 
             # update result
             if minEnd < 0 or end - begin < minEnd - minBegin:
-                minBegin = begin 
+                minBegin = begin
                 minEnd = end
 
             # skip leftmost needed to make win invalid again

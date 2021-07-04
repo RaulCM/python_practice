@@ -38,7 +38,7 @@ def submit(batch, task_queue):
 
 
 parallelism = 3
-chunks_to_buffer=1 # pool extra chunks when all workers are busy
+chunks_to_buffer = 1 # pool extra chunks when all workers are busy
 task_queue = Queue(maxsize=chunks_to_buffer)
 # Set up daemons to process the tasks
 for i in range(parallelism):

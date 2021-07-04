@@ -6,14 +6,14 @@ def is_nbr(s1, s2):
     if len(s1) != len(s2):
         return False
 
-    dist = (int(a != b) for a,b in zip(s1, s2))
+    dist = (int(a != b) for a, b in zip(s1, s2))
 
     return sum(dist) == 1
 
 
 def make_graph(words, n):
     adj_list = [[] for _ in range(n)]
-    for i,j in combinations(range(n), 2):
+    for i, j in combinations(range(n), 2):
         if is_nbr(words[i], words[j]):
             adj_list[i].append(j)
             adj_list[j].append(i)

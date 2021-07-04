@@ -38,7 +38,7 @@ def map_queries_steps(folder, query_pat):
     step_paths = list_files(f"{folder}/steps", 'stdout')
 
     acc = dict()
-    for f,s in search(step_paths, f'Running execution {query_pat} iteration'):
+    for f, s in search(step_paths, f'Running execution {query_pat} iteration'):
         query_id = s[0].split()[2]
         step_id = next(filter(lambda x: x.startswith('s-'), f.split('/')))
         acc[query_id] = step_id
@@ -50,7 +50,7 @@ def map_steps_apps(folder):
     step_paths = list_files(f"{folder}/steps", 'stderr')
 
     acc = dict()
-    for f,s in search(step_paths, r'YarnClientSchedulerBackend: Application application_\w+ has started running'):
+    for f, s in search(step_paths, r'YarnClientSchedulerBackend: Application application_\w+ has started running'):
         app_id = s[0].split()[2]
         step_id = next(filter(lambda x: x.startswith('s-'), f.split('/')))
         acc[step_id] = app_id
@@ -61,7 +61,7 @@ def map_steps_apps(folder):
 def process_line(line):
     parts = line.split('|')[1:]
     assert len(parts) == 6, f"illegal : {line}"
-    
+
     schema, numFields, allFixedSized, allNonNull, numBytes, numRows = parts
     numFields = int(numFields)
     numBytes = int(numBytes)
@@ -87,8 +87,8 @@ def reduce_logs(log_groups):
 
 def parse_logs(app_files):
     log_groups = dict()
-    for _,lines in search(app_files, 'insertRecordIntoSorterCounter.+'):
-        for line in filter(bool, map(lambda s : s.strip(), lines)):
+    for _, lines in search(app_files, 'insertRecordIntoSorterCounter.+'):
+        for line in filter(bool, map(lambda s: s.strip(), lines)):
             record = process_line(line)
             if record.numBytes > 0 or record.numRows > 0:
                 log_groups.setdefault(record.schema, []).append(record)

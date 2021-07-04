@@ -1,7 +1,6 @@
 # given k sorted lists, find min range which includes an element from each
 # list of band performances what window of days to visit festival
 
-from queue import PriorityQueue
 import heapq as hq
 
 

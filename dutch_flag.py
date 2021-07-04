@@ -1,5 +1,4 @@
 # partition 3 way using a classifier returning 0, 1, 2
-import random
 
 
 def three_way_partition(items, classifier):

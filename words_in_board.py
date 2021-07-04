@@ -42,7 +42,7 @@ def search(board, i, j, trie, visited, count):
 
     visited = visited | {(i, j)}
 
-    for r,c in gen_nbrs(board, i, j):
+    for r, c in gen_nbrs(board, i, j):
         search(board, r, c, trie, visited, count)
 
 
@@ -73,7 +73,7 @@ def find(board, i, j, trie, visited, prefix, found):
     if IS_WORD in trie:
         found.add(''.join(prefix))
 
-    for r,c in gen_nbrs(board, i, j):
+    for r, c in gen_nbrs(board, i, j):
         find(board, r, c, trie, visited, prefix, found)
 
 

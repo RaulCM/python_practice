@@ -27,7 +27,7 @@ class DisjointSet:
         return self.parent[x]
 
 
-    def count(self) :
+    def count(self):
         s = {self.find(x) for x in range(len(self.parent))}
         return len(s)
 
@@ -37,10 +37,10 @@ class DisjointSet:
 
 def count_connected_components(n, edges):
   dj = DisjointSet(n)
-  
-  for u,v in edges:
-    dj.union(u,v)
-  
+
+  for u, v in edges:
+    dj.union(u, v)
+
   return dj.count()
 
-count_connected_components(5, [[0,1],[0,2],[3,4],[2,3]])
+count_connected_components(5, [[0, 1], [0, 2], [3, 4], [2, 3]])

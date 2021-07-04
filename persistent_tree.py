@@ -10,7 +10,7 @@ class Node:
 def put(node, k, v):
     if node is None:
         return Node(k, v)
-    
+
     if k < node.key:
         return Node(node.key, node.val, put(node.left, k, v), node.right)
     elif k > node.key:
@@ -22,7 +22,7 @@ def put(node, k, v):
 def get(node, k):
     if node is None:
         return None
-    
+
     if k < node.key:
         return get(node.left, k)
     elif k > node.key:
@@ -33,13 +33,13 @@ def get(node, k):
 def contents(node):
     if node is None:
         return []
-    
+
     acc = []
     if node.left:
         acc.append(contents(node.left))
-    
+
     acc.append((node.key, node.val))
-    
+
     if node.right:
         acc.append(contents(node.right))
 

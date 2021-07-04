@@ -29,5 +29,5 @@ def path_to(target, node):
 
     return None
 
-print(path_to("a1",["a", "b", ["a", {"x" : "a1"}]]))
+print(path_to("a1", ["a", "b", ["a", {"x" : "a1"}]]))
 print(count(["a", "b", ["a", {"x" : "a"}]], "a"))

@@ -4,7 +4,7 @@ def len_of_longest_pall_subseq(s, left, right, memo):
 
     if left == right:
         return 1
-    
+
     if (left, right) in memo:
         return memo[(left, right)]
 
@@ -12,9 +12,9 @@ def len_of_longest_pall_subseq(s, left, right, memo):
     if s[left] == s[right]:
         ans = 2 + len_of_longest_pall_subseq(s, left + 1, right - 1, memo)
     else:
-        ans = max(len_of_longest_pall_subseq(s, left, right - 1, memo), 
+        ans = max(len_of_longest_pall_subseq(s, left, right - 1, memo),
                 len_of_longest_pall_subseq(s, left + 1, right, memo))
-    
+
     memo[(left, right)] = ans
     return ans
 

@@ -12,7 +12,7 @@ class Node:
 def make_tree(items):
     if items is None:
         return None
-    
+
     left = make_tree(items[1])
     right = make_tree(items[2])
 
@@ -35,7 +35,7 @@ def levels(root):
                 frontier.append(node.left)
             if node.right:
                 frontier.append(node.right)
-        
+
         levels.append(acc)
 
     return levels
@@ -44,28 +44,28 @@ def levels(root):
 def r_ht(root):
     if root is None:
         return 0
-    
+
     h = 0
     node = root
 
     while node:
         h += 1
         node = node.right
-    
+
     return h
 
 
 def l_ht(root):
     if root is None:
         return 0
-    
+
     h = 0
     node = root
 
     while node:
         h += 1
         node = node.left
-    
+
     return h
 
 
@@ -86,7 +86,7 @@ def find_node_by_pos(root, i):
         return None
     if i == 1:
         return root
-    
+
     stack = []
 
     while i > 1:
@@ -94,7 +94,7 @@ def find_node_by_pos(root, i):
             stack.append('r')
         else:
             stack.append('l')
-        i = i // 2    
+        i = i // 2
 
     node = root
     for op in reversed(stack):
@@ -119,7 +119,7 @@ def insert_complete_tree(root, val):
     node = Node(val)
     if not root:
         return node
-    
+
     parent = find_vaccant_node(root)
     if parent.left is None:
         parent.left = node

@@ -37,7 +37,7 @@ def main():
     with open(filepath) as fp:
         for line in fp:
             data = line.strip()
-            if data: 
+            if data:
                 process(data)
 
 if __name__ == '__main__':

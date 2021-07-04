@@ -8,14 +8,14 @@ def fix_stack(i, x, stack, k, n):
 def find_smallest_subseq(nums, k):
     if k <= 0:
         return []
-    
+
     n = len(nums)
     stack = []
 
     for i, x in enumerate(nums):
         fix_stack(i, x, stack, k, n)
         stack.append(x)
-    
+
     return stack[:k]
 
 

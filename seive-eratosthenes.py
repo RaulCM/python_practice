@@ -1,7 +1,7 @@
 from math import isqrt
 
 def primes_less_than(n: int) -> list[int]:
-    if n<= 2:
+    if n <= 2:
         return []
     is_prime = [True] * n
     is_prime[0] = False

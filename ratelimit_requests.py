@@ -28,7 +28,7 @@ def count_served(requests, U, G):
     return ans
 
 
-print(count_served([[0, 1],[0, 2]], 1, 5))
-print(count_served([[0, 1],[0, 61]], 1, 5))
-print(count_served([[0, 1],[1, 2], [2, 3]], 1, 2))
-print(count_served([[0, 1],[0, 2], [1, 3], [1, 4]], 2, 4))
+print(count_served([[0, 1], [0, 2]], 1, 5))
+print(count_served([[0, 1], [0, 61]], 1, 5))
+print(count_served([[0, 1], [1, 2], [2, 3]], 1, 2))
+print(count_served([[0, 1], [0, 2], [1, 3], [1, 4]], 2, 4))
